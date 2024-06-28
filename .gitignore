@@ -45,3 +45,5 @@ junk
 tmp
 
 .ipynb_checkpoints
+
+cookbook/llms/groq/groqvideosummary/
