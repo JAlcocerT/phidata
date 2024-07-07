@@ -7,8 +7,8 @@ st.set_page_config(
     page_title="Youtube Video Summaries",
     page_icon=":orange_heart:",
 )
-st.title("Youtube Video Summaries powered by Groq")
-st.markdown("##### :orange_heart: built using [phidata](https://github.com/phidatahq/phidata)")
+st.title("Youtube Video Summaries 🎥")
+# st.markdown("##### :orange_heart: built using [phidata](https://github.com/phidatahq/phidata)")
 
 
 def main() -> None:
@@ -41,15 +41,17 @@ def main() -> None:
     if generate_report:
         st.session_state["youtube_url"] = video_url
 
-    st.sidebar.markdown("## Trending Videos")
-    if st.sidebar.button("Intro to Large Language Models"):
-        st.session_state["youtube_url"] = "https://youtu.be/zjkBMFhNj_g"
+    # st.sidebar.markdown("## Trending Videos")
+    st.sidebar.markdown("##### :orange_heart: built using [phidata](https://github.com/phidatahq/phidata)")
 
-    if st.sidebar.button("What's next for AI agents"):
-        st.session_state["youtube_url"] = "https://youtu.be/pBBe1pk8hf4"
+    # if st.sidebar.button("Intro to Large Language Models"):
+    #     st.session_state["youtube_url"] = "https://youtu.be/zjkBMFhNj_g"
 
-    if st.sidebar.button("Making AI accessible"):
-        st.session_state["youtube_url"] = "https://youtu.be/c3b-JASoPi0"
+    # if st.sidebar.button("What's next for AI agents"):
+    #     st.session_state["youtube_url"] = "https://youtu.be/pBBe1pk8hf4"
+
+    # if st.sidebar.button("Making AI accessible"):
+    #     st.session_state["youtube_url"] = "https://youtu.be/c3b-JASoPi0"
 
     if "youtube_url" in st.session_state:
         _url = st.session_state["youtube_url"]

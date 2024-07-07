@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  phidata_service:
+    image: phidata:yt_summary_groq
+    container_name: phidata_yt_groq
+    ports:
+      - "8502:8501"    
+    environment:
+      - GROQ_API_KEY=your_api_key_here # your_api_key_here 🖕
+    command: tail -f /dev/null #streamlit run cookbook/llms/groq/video_summary/app.py
+#     networks:
+#       - cloudflare_tunnel
+            
+# networks:
+#   cloudflare_tunnel:
+#     external: true        
+
+
+#docker exec -it phidata_yt_groq /bin/bash
+#podman exec -it phidata_yt_groq /bin/bash
+
+# cd ./cookbook/llms/groq/video_summary
+# streamlit run app.py

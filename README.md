@@ -1,5 +1,8 @@
 * Forked from https://github.com/phidatahq/phidata to...
+    
+* ...add systematical deployment method with [CI/CD](https://fossengineer.com/docker-github-actions-cicd/) & containers `./Z_DeployMe`    
     * Try the **YT Summaries** with Groq API
+
 ---
 
 <h1 align="center">

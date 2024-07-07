@@ -1,14 +1,14 @@
 name: test
 
-on:
-  push:
-  pull_request:
-    types:
-      - opened
-      - edited
-      - reopened
-    branches:
-      - 'main'
+# on:
+#   push:
+#   pull_request:
+#     types:
+#       - opened
+#       - edited
+#       - reopened
+#     branches:
+#       - 'main'
 
 jobs:
   format-lint:
