@@ -3,6 +3,17 @@
 * ...add systematical deployment method with [CI/CD](https://fossengineer.com/docker-github-actions-cicd/) & containers `./Z_DeployMe`    
     * Try the **YT Summaries** with Groq API
 
+<div align="center" style="line-height: 1;">
+
+  <a href="https://github.com/JAlcocerT/phidata/actions/workflows/streamlit_GH_Actions.yml" style="margin: 2px;">
+    <img alt="Model License" src="https://github.com/JAlcocerT/phidata/actions/workflows/streamlit_GH_Actions.yml/badge.svg" style="display: inline-block; vertical-align: middle;"/>
+  </a>
+
+</div>
+
+![Python Versions Groq](https://img.shields.io/pypi/pyversions/groq.svg#center)
+
+
 ---
 
 <h1 align="center">

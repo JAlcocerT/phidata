@@ -1,5 +1,7 @@
 FROM python:3.11
 
+LABEL org.opencontainers.image.source https://github.com/JAlcocerT/phidata
+
 # Install git
 RUN apt-get update && apt-get install -y git
 

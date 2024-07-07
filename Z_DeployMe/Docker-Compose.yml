@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   phidata_service:
-    image: phidata:yt_summary_groq
+    image: ghcr.io/jalcocert/phidata:yt-groq #phidata:yt_summary_groq
     container_name: phidata_yt_groq
     ports:
       - "8502:8501"    
