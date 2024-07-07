@@ -5,13 +5,20 @@
 
 <div align="center" style="line-height: 1;">
 
-  <a href="https://github.com/JAlcocerT/phidata/actions/workflows/streamlit_GH_Actions.yml" style="margin: 2px;">
-    <img alt="Model License" src="https://github.com/JAlcocerT/phidata/actions/workflows/streamlit_GH_Actions.yml/badge.svg" style="display: inline-block; vertical-align: middle;"/>
+  <a href="https://github.com/JAlcocerT/phidata/actions/workflows/Streamlit_GHA_MultiArch.yml" style="margin: 2px;">
+    <img alt="GH Actions Workflow" src="https://github.com/JAlcocerT/phidata/actions/workflows/Streamlit_GHA_MultiArch.yml/badge.svg" style="display: inline-block; vertical-align: middle;"/>
+  </a>
+
+  <a href="https://pypi.org/project/groq/" style="margin: 2px;">
+    <img alt="Python Versions Groq" src="https://img.shields.io/pypi/pyversions/groq.svg" style="display: inline-block; vertical-align: middle;"/>
   </a>
 
 </div>
 
-![Python Versions Groq](https://img.shields.io/pypi/pyversions/groq.svg#center)
+![Python Versions Groq](https://img.shields.io/pypi/pyversions/groq.svg)
+[![HitCount](https://hits.dwyl.com/jalcocert/phidata.svg?style=flat-square)](http://hits.dwyl.com/jalcocert/phidata)
+
+[![Join the chat at https://gitter.im/{ORG-or-USERNAME}/{REPO-NAME}](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dwyl/?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 
 ---
