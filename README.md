@@ -1,7 +1,9 @@
 * Forked from https://github.com/phidatahq/phidata to...
     
 * ...add systematical deployment method with [CI/CD](https://fossengineer.com/docker-github-actions-cicd/) & containers `./Z_DeployMe`    
-    * Try the **YT Summaries** with Groq API
+    * Try the **YT Summaries** with [Groq API](https://console.groq.com/keys)
+        * Groq Models - https://console.groq.com/docs/models
+        * `./cookbook/llms/groq/video_summary/`
 
 <div align="center" style="line-height: 1;">
 
