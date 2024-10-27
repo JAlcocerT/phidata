@@ -19,7 +19,7 @@ pip install -r cookbook/agents/requirements.txt
 
 ### 3. Export credentials
 
-- We use gpt-4o as the llm, so export your OpenAI API Key
+- We use **gpt-4o** as the llm, so export your OpenAI API Key
 
 ```shell
 export OPENAI_API_KEY=***

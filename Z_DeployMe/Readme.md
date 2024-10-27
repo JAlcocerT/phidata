@@ -23,8 +23,21 @@ ytgroq\Scripts\activate #activate venv (windows)
 source ytgroq/bin/activate #(linux)
 ```
 
+
+## YT+Groq
 ```sh
 cd ./cookbook/llms/groq/video_summary
 pip install -r requirements.txt #all at once
 streamlit run app.py
+```
+
+## Agents with OpenAI GPT Models
+
+It can read blog posts/pdf/Databases (duckDB compatible)
+
+```sh
+cd ./cookbook/agents
+pip install -r requirements.txt #all at once
+streamlit run app.py
+#streamlit run cookbook/agents/app.py
 ```
