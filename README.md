@@ -1,36 +1,76 @@
 <div align="center">
   <h1>PhiData Tests</h1>
 </div>
-
 <div align="center">
-  <h3>Chat over custom data</h3>
+  <h3> Build Agents with memory, knowledge, tools and reasoning </h3>
+</div>
+<div align="center">
+  <h3> Youtube Summarizer with Groq API </h3>
 </div>
 
 
 <div align="center">
-  <a href="https://github.com/JAlcocerT/Streamlit-MultiChat?tab=GPL-3.0-1-ov-file" style="margin-right: 5px;">
-    <img alt="Code License" src="https://img.shields.io/badge/License-GPLv3-blue.svg" />
+  <!-- License Badge -->
+  <a href="https://github.com/JAlcocerT/Streamlit-MultiChat?tab=GPL-3.0-1-ov-file" class="badge-link">
+    <img alt="Code License GPLv3" src="https://img.shields.io/badge/License-GPLv3-blue.svg" class="badge-img"/>
   </a>
-  <a href="https://github.com/JAlcocerT/Streamlit-MultiChat/actions/workflows/Streamlit_GHA_MultiArch.yml" style="margin-right: 5px;">
-    <img alt="GH Actions Workflow" src="https://github.com/JAlcocerT/Streamlit-MultiChat/actions/workflows/Streamlit_GHA_MultiArch.yml/badge.svg" />
+
+  <!-- GitHub Actions Workflow Badge -->
+  <a href="https://github.com/JAlcocerT/Streamlit-MultiChat/actions/workflows/Streamlit_GHA_MultiArch.yml" class="badge-link">
+    <img alt="GitHub Actions Workflow Status" src="https://github.com/JAlcocerT/Streamlit-MultiChat/actions/workflows/Streamlit_GHA_MultiArch.yml/badge.svg" class="badge-img"/>
   </a>
-  <a href="https://GitHub.com/JAlcocerT/Streamlit-Multichat/graphs/commit-activity" style="margin-right: 5px;">
-    <img alt="Mantained" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+
+  <!-- Maintenance Status Badge -->
+  <a href="https://GitHub.com/JAlcocerT/Streamlit-Multichat/graphs/commit-activity" class="badge-link">
+    <img alt="Maintained? Yes" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" class="badge-img"/>
   </a>
-  <a href="https://www.python.org/downloads/release/python-312">
-    <img alt="Python Version" src="https://img.shields.io/badge/python-3.12-blue.svg" />
+
+  <!-- Python Version Badge (commented out but can be used if needed) -->
+  <!--
+  <a href="https://www.python.org/downloads/release/python-312" class="badge-link">
+    <img alt="Python Version" src="https://img.shields.io/badge/python-3.12-blue.svg" class="badge-img"/>
+  </a>
+  -->
+
+  <!-- Python Versions Groq Badge -->
+  <a href="https://pypi.org/project/groq/" class="badge-link">
+    <img alt="Supported Python Versions for Groq" src="https://img.shields.io/pypi/pyversions/groq.svg" class="badge-img"/>
+  </a>
+
+  <!-- HitCount Badge -->
+  <a href="http://hits.dwyl.com/jalcocert/phidata" class="badge-link">
+    <img src="https://hits.dwyl.com/jalcocert/phidata.svg?style=flat-square" alt="HitCount" class="badge-img"/>
   </a>
 </div>
 
-* Forked from https://github.com/phidatahq/phidata to...
+<!-- Adding custom styles for better control and readability -->
+<style>
+  .badge-link {
+    margin-right: 5px;
+  }
+  
+  .badge-img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+</style>
+
+
+
+* **Forked** from [PhiData](https://github.com/phidatahq/phidata) to...
     
 * ...add systematical deployment method with [CI/CD](https://fossengineer.com/docker-github-actions-cicd/) & containers `./Z_DeployMe`    
-    * Try the **YT Summaries** with [Groq API](https://console.groq.com/keys)
+    * Try the **YT Summaries** with [**Groq API**](https://console.groq.com/keys)
         * Groq Models - https://console.groq.com/docs/models
         * `./cookbook/llms/groq/video_summary/`
     * `./cookbook/agents/app.py`
+* And to Try [manual astro Theme](https://github.com/TheOtterlord/manual) with Github CI/CD for the docs
 
-<div align="center" style="line-height: 1;">
+* How to [deploy section](https://github.com/JAlcocerT/phidata/tree/main/Z_DeployMe)
+
+> Extended explanation at [this blog post](https://jalcocert.github.io/JAlcocerT/summarize-yt-videos/)
+
+<!-- <div align="center" style="line-height: 1;">
 
   <a href="https://github.com/JAlcocerT/phidata/actions/workflows/Streamlit_GHA_MultiArch.yml" style="margin: 2px;">
     <img alt="GH Actions Workflow" src="https://github.com/JAlcocerT/phidata/actions/workflows/Streamlit_GHA_MultiArch.yml/badge.svg" style="display: inline-block; vertical-align: middle;"/>
@@ -40,11 +80,45 @@
     <img alt="Python Versions Groq" src="https://img.shields.io/pypi/pyversions/groq.svg" style="display: inline-block; vertical-align: middle;"/>
   </a>
 
-</div>
+</div> -->
 
-[![HitCount](https://hits.dwyl.com/jalcocert/phidata.svg?style=flat-square)](http://hits.dwyl.com/jalcocert/phidata)
+<!-- [![HitCount](https://hits.dwyl.com/jalcocert/phidata.svg?style=flat-square)](http://hits.dwyl.com/jalcocert/phidata) -->
 
-[![Join the chat at https://gitter.im/{ORG-or-USERNAME}/{REPO-NAME}](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dwyl/?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+<!-- [![Join the chat at https://gitter.im/{ORG-or-USERNAME}/{REPO-NAME}](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/dwyl/?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) -->
+
+## Venv Setup
+
+
+```sh
+python3 -m venv Z_PhiData_YT_Groq_venv
+
+#Unix
+source Z_PhiData_YT_Groq_venv/bin/activate
+#.\Z_PhiData_YT_Groq_venv\Scripts\activate #Windows
+
+cd ./cookbook/llms/groq/video_summary
+pip install -r requirements.txt
+
+source .env
+#export GROQ_API_KEY="your-api-key-here"
+#set GROQ_API_KEY=your-api-key-here
+#$env:GROQ_API_KEY="your-api-key-here"
+echo $GROQ_API_KEY
+
+
+streamlit run app.py
+
+# git add .
+# git commit -m "some change to phidata yt groq"
+# git push
+```
+
+See all models available with:
+
+```sh
+curl https://api.groq.com/openai/v1/models \
+-H "Authorization: Bearer $GROQ_API_KEY"
+```
 
 
 ---

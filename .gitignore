@@ -1,7 +1,11 @@
+*_venv/
+
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 ytgroq/
 agents/
+
+
 
 .DS_Store
 
