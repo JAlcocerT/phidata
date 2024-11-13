@@ -43,17 +43,6 @@
   </a>
 </div>
 
-<!-- Adding custom styles for better control and readability -->
-<style>
-  .badge-link {
-    margin-right: 5px;
-  }
-  
-  .badge-img {
-    display: inline-block;
-    vertical-align: middle;
-  }
-</style>
 
 
 
@@ -66,9 +55,9 @@
     * `./cookbook/agents/app.py`
 * And to Try [manual astro Theme](https://github.com/TheOtterlord/manual) with Github CI/CD for the docs
 
-* How to [deploy section](https://github.com/JAlcocerT/phidata/tree/main/Z_DeployMe)
+* How to [deploy section](https://github.com/JAlcocerT/phidata/tree/main/Z_DeployMe) using the [GHCR Container Image](https://github.com/JAlcocerT/phidata/pkgs/container/phidata)
 
-> Extended explanation at [this blog post](https://jalcocert.github.io/JAlcocerT/summarize-yt-videos/)
+> **Extended explanation** at [this blog post](https://jalcocert.github.io/JAlcocerT/summarize-yt-videos/)
 
 <!-- <div align="center" style="line-height: 1;">
 
