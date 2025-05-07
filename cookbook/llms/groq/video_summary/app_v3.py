@@ -1,11 +1,14 @@
 import streamlit as st
+
 from phi.tools.youtube_tools import YouTubeTools
 from assistant import get_chunk_summarizer, get_video_summarizer  # type: ignore
 
-from Z_Functions import Auth_functions as af
+#from Z_Functions import Auth_functions as af
+import Auth_functions as af
 
 # Load environment variables from .env file
 from dotenv import load_dotenv
+import os
 load_dotenv()  # This loads all environment variables from the .env file
 
 st.set_page_config(
@@ -16,13 +19,41 @@ st.title("Youtube Video Summaries 🎥")
 # st.markdown("##### :orange_heart: built using [phidata](https://github.com/phidatahq/phidata)")
 
 
+from groq import Groq
+
+# Load environment variables (already done above, but for clarity if this snippet is used alone)
+load_dotenv()
+
+def get_available_groq_models_from_env():
+    """
+    Reads available Groq models from the AVAILABLE_LLM_MODELS environment variable.
+    Returns a list of model names or None if the variable is not set.
+    """
+    model_string = os.getenv("AVAILABLE_LLM_MODELS")
+    if model_string:
+        return [model.strip() for model in model_string.split(',')]
+    return None
+
 def main() -> None:
     if af.login():
-        # Streamlit UI setup    
-        # Get model
-        llm_model = st.sidebar.selectbox(
-            "Select Model", options=["llama3-70b-8192", "llama3-8b-8192", "mixtral-8x7b-32768"]
-        )
+
+        # Get LLMs via Groq API or from .env
+        available_models_env = get_available_groq_models_from_env()
+
+        if available_models_env:
+            llm_model = st.sidebar.selectbox(
+                "Select Model", options=available_models_env
+            )
+        else:
+            llm_model = st.sidebar.selectbox(
+                "Select Model", options=["llama3-70b-8192", "llama3-8b-8192", "mixtral-8x7b-32768"],
+                help="AVAILABLE_LLM_MODELS not found in .env, using default list."
+            )
+            st.sidebar.info(
+                "To load models from .env, define a comma-separated list like:\n"
+                "AVAILABLE_LLM_MODELS=llama3-70b-8192,llama3-8b-8192,mixtral-8x7b-32768"
+            )
+
         # Set assistant_type in session state
         if "llm_model" not in st.session_state:
             st.session_state["llm_model"] = llm_model
@@ -49,7 +80,7 @@ def main() -> None:
             st.session_state["youtube_url"] = video_url
 
         # st.sidebar.markdown("## Trending Videos")
-        st.sidebar.markdown("##### :orange_heart: built using [phidata](https://github.com/phidatahq/phidata)")
+        st.sidebar.markdown("##### Forked with :orange_heart: from [phidata](https://github.com/JAlcocerT/phidata)")
 
         if "youtube_url" in st.session_state:
             _url = st.session_state["youtube_url"]

@@ -1,3 +1,4 @@
+# youtube_tools.py: Fetches YouTube video metadata and captions via youtube-transcript-api
 import json
 from urllib.parse import urlparse, parse_qs, urlencode
 from urllib.request import urlopen

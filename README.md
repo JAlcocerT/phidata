@@ -38,15 +38,15 @@
   </a>
 
   <!-- HitCount Badge -->
-  <a href="http://hits.dwyl.com/jalcocert/phidata" class="badge-link">
+  <!-- <a href="http://hits.dwyl.com/jalcocert/phidata" class="badge-link">
     <img src="https://hits.dwyl.com/jalcocert/phidata.svg?style=flat-square" alt="HitCount" class="badge-img"/>
   </a>
-</div>
+</div> -->
 
 
 
 
-* **Forked** from [PhiData](https://github.com/phidatahq/phidata) to...
+**Forked** from [PhiData](https://github.com/phidatahq/phidata) to...
     
 * ...add systematical deployment method with [CI/CD](https://fossengineer.com/docker-github-actions-cicd/) & containers `./Z_DeployMe`    
     * Try the **YT Summaries** with [**Groq API**](https://console.groq.com/keys)
@@ -109,6 +109,76 @@ curl https://api.groq.com/openai/v1/models \
 -H "Authorization: Bearer $GROQ_API_KEY"
 ```
 
+Here’s a high-level walk-through of how the `cookbook/llms/groq/video_summary` example is wired together:
+
+  1. What it is
+      • A Streamlit-based demo that takes a YouTube URL, pulls down its transcript, and then uses Groq LLMs (via the Phidata “Assistant” API) to produce a two-stage New York-Times-style
+write-up.
+      • You log in (via `streamlit-authenticator`), pick your Groq model, set a “chunk” size, paste a video link and click Generate.
+  2. Key Dependencies
+      • streamlit + streamlit-authenticator (UI & login)
+      • youtube-transcript-api (via Phidata’s `YouTubeTools`)
+      • phidata (the Assistant abstraction)
+      • groq (the Python client for Groq’s OpenAI-compatible API)
+      • python-dotenv (to load your `GROQ_API_KEY`)
+  3. Pipeline in `app.py`
+        a. User logs in (hard-coded creds in `Z_Functions/Auth_functions.py`).
+        b. Sidebar controls let you choose a model (`llama3-70b-8192`, `llama3-8b-8192`, etc.), set how many words per “chunk,” paste the YouTube URL and click Generate.
+        c. Under the hood it calls
+
+          youtube_tools = YouTubeTools(languages=[“en”])
+          video_data     = youtube_tools.get_youtube_video_data(url)
+          video_captions = youtube_tools.get_youtube_video_captions(url)
+
+        so you see the embedded video + raw transcript.
+
+        d. It splits the full transcript into N word-based chunks (based on your slider).
+        e. For each chunk:
+        • Instantiates a **chunk summarizer** via `get_chunk_summarizer(model)` (in `assistant.py`), which is a Phidata Assistant wrapping `phi.llm.groq.Groq(model=…)` plus system-style
+instructions (“You are a Senior NYT Reporter tasked with summarizing…”).
+        • Streams back each chunk’s summary in real-time using `assistant.run(...)`.
+        f. Once all chunks are done it stitches them together and runs a **final summarizer** (`get_video_summarizer(model)`), again a Groq-backed Assistant with its own NYT-style prompt
+and a `<report_format>` system message that tells it to output sections, headlines, key takeaways, date, etc.
+        g. The final polished report is streamed back and rendered as Markdown in the app.
+  4. How the Assistants are defined (`assistant.py`)
+      • Both `get_chunk_summarizer` and `get_video_summarizer` return a `phi.assistant.Assistant` configured with:
+
+  * `llm=Groq(model=…)`
+  * `description`, a list of human instructions,
+  * an injected `<report_format>` system prompt,
+  * `markdown=True` and `debug_mode=True` for richer output and streaming.
+
+  1. Supporting files
+      • `groq_available_models.py` shows how to hit Groq’s `/openai/v1/models` endpoint to list your deployed LLMs.
+      • `groq_sample_qq.py` is a minimal one-shot Q&A assistant example.
+      • `requirements.txt` pins Streamlit, Phidata, Groq, youtube-transcript-api, etc.
+      • `app_v2.py` is an alternate entry-point that does the same flow with a slightly different bootstrap (it calls `load_dotenv()`).
+  2. What you learn from this demo
+      • How to ingest and chunk large text (YouTube captions)
+      • How to chain multiple LLM calls (chunk-level → aggregate-level)
+      • How to stream partial results in a Streamlit UI
+      • How to leverage Phidata’s Assistant abstraction on top of any OpenAI-compatible API (Groq here)
+      • How to tame long transcripts by chunking against your model’s context window
+
+> All in all, it’s a concise reference for building a **multi-step summarization pipeline**: YouTube → transcript → chunking → junior summaries → senior summary—using Phidata + Groq + Streamlit.
+
+
+I’ve added a one-line top-of-file comment to each Python module involved in the `app_v3.py` run:
+
+* **cookbook/llms/groq/video_summary/app_v2.py**
+  “Streamlit front-end that orchestrates YouTube video summarization via Phidata + Groq”
+* **cookbook/llms/groq/video_summary/assistant.py**
+  “Defines Phidata Assistants for chunk-level and final video summarization using Groq LLMs”
+* **cookbook/llms/groq/video_summary/Z_Functions/Auth_functions.py**
+  “Provides Streamlit login/logout functionality using streamlit-authenticator”
+* **phi/tools/youtube_tools.py**
+  “Fetches YouTube video metadata and captions via youtube-transcript-api”
+* Possibility to pass the latest groq models available via `.env`
+
+**Thanks to:**
+
+* https://pypi.org/project/youtube-transcript-api/
+  * https://github.com/jdepoix/youtube-transcript-api
 
 ---
 

@@ -1,3 +1,4 @@
+# Auth_functions.py: Provides Streamlit login/logout functionality using streamlit-authenticator
 import streamlit as st
 import streamlit_authenticator as stauth
 #import yaml

@@ -1,3 +1,4 @@
+# assistant.py: Defines Phidata Assistants for chunk-level and final video summarization using Groq LLMs
 from textwrap import dedent
 from phi.llm.groq import Groq
 from phi.assistant import Assistant

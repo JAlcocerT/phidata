@@ -1,4 +1,5 @@
 * There is a **GH Actions WF** that pushes the changes to - https://github.com/JAlcocerT?tab=packages
+* https://github.com/JAlcocerT/Docker/tree/main/AI_Gen/Project_YT_Groq
 
 ```sh
 docker pull ghcr.io/jalcocert/phidata:yt-groq #https://github.com/users/JAlcocerT/packages/container/package/phidata
@@ -25,6 +26,7 @@ source ytgroq/bin/activate #(linux)
 
 
 ## YT+Groq
+
 ```sh
 cd ./cookbook/llms/groq/video_summary
 pip install -r requirements.txt #all at once
