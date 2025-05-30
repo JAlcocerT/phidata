@@ -1,0 +1,30 @@
+#docker compose -f ytgroq_docker-compose.yml ps
+
+#version: '3.8'
+#https://github.com/JAlcocerT/Docker/tree/main/AI_Gen/Project_YT_Groq
+version: '3.8'
+
+services:
+  routed_service:
+    image: ghcr.io/jalcocert/phidata:yt-groq
+    container_name: routed_service
+    restart: unless-stopped
+    environment:
+      - GROQ_API_KEY=your_api_key_here
+      - AVAILABLE_LLM_MODELS=deepseek-r1-distill-llama-70b,qwen-qwq-32b,llama-3.3-70b-versatile,llama-3.1-8b-instant,gemma2-9b-it,llama3-70b-8192
+    #command: tail -f /dev/null
+    command: streamlit run cookbook/llms/groq/video_summary/app.py 
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.phidata-yt-groq.rule=Host(`routed_service.jalcocertech.com`)"
+      - "traefik.http.routers.phidata-yt-groq.entrypoints=https"
+      - "traefik.http.routers.phidata-yt-groq.tls=true"
+      - "traefik.http.routers.phidata-yt-groq.tls.certresolver=cloudflare"
+      - "traefik.http.services.phidata-yt-groq.loadbalancer.server.port=8501"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.phidata-yt-groq.middlewares=default-security-headers@file"
+networks:
+  proxy:
+    external: true

@@ -9,7 +9,8 @@ services:
     environment:
       - GROQ_API_KEY=your_api_key_here # your_api_key_here 🖕
       - AVAILABLE_LLM_MODELS = deepseek-r1-distill-llama-70b,qwen-qwq-32b,llama-3.3-70b-versatile,llama-3.1-8b-instant,gemma2-9b-it,llama3-70b-8192
-    command: tail -f /dev/null #streamlit run cookbook/llms/groq/video_summary/app_v3.py
+    #command: tail -f /dev/null 
+    command: streamlit run cookbook/llms/groq/video_summary/app_v3.py
 #     networks:
 #       - cloudflare_tunnel
             
