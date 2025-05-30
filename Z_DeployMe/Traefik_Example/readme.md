@@ -26,3 +26,9 @@ chmod 600 /home/jalcocert/Docker/JimsGarage/Traefikv3/config/acme.json
 
 sudo docker network create proxy
 ```
+
+5. Run the service:
+
+```sh
+docker compose -f ytgroq_docker-compose.yml up -d
+```

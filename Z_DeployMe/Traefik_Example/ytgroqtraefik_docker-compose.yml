@@ -1,8 +1,8 @@
-#docker compose -f ytgroq_docker-compose.yml ps
+#docker compose -f ytgroqtraefik_docker-compose.yml up -d
 
 #version: '3.8'
 #https://github.com/JAlcocerT/Docker/tree/main/AI_Gen/Project_YT_Groq
-version: '3.8'
+#version: '3.8'
 
 services:
   routed_service:
@@ -16,7 +16,7 @@ services:
     command: streamlit run cookbook/llms/groq/video_summary/app.py 
     networks:
       - proxy
-    labels:
+    labels: #with these labels, there is nothing more to configure in the traefik UI nor config.yaml
       - "traefik.enable=true"
       - "traefik.http.routers.phidata-yt-groq.rule=Host(`routed_service.jalcocertech.com`)"
       - "traefik.http.routers.phidata-yt-groq.entrypoints=https"
